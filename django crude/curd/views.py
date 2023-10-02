@@ -4,7 +4,7 @@ from rest_framework.generics import CreateAPIView
 from rest_framework.generics import DestroyAPIView
 from rest_framework.generics import UpdateAPIView
 from curd.serializer import user_serializer_form
-from curd.models import user_info
+from curd.models import UserInfo
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
 
@@ -22,20 +22,20 @@ def all_data_overview(request):
 
 
 class contact_api_list_view(ListAPIView):
-    queryset = user_info.objects.all()
+    queryset = UserInfo.objects.all()
     serializer_class = user_serializer_form
 
 
 class contact_api_create_view(CreateAPIView):
-    queryset = user_info.objects.all()
+    queryset = UserInfo.objects.all()
     serializer_class = user_serializer_form
 
 class contact_api_update_view(UpdateAPIView):
-    queryset = user_info.objects.all()
+    queryset = UserInfo.objects.all()
     serializer_class = user_serializer_form
 
 class contact_api_delete_view(DestroyAPIView):
-    queryset = user_info.objects.all()
+    queryset = UserInfo.objects.all()
     serializer_class = user_serializer_form
 
 
@@ -61,7 +61,7 @@ class contact_api_delete_view(DestroyAPIView):
 
 # from django.shortcuts import render
 # from curd.forms import UserInfoForm
-# from curd.models import user_info
+# from curd.models import UserInfo
 
 # from curd.serializer import user_serializer_form
 # from rest_framework.response import Response

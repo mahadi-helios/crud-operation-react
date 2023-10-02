@@ -3,7 +3,7 @@ from django.core import validators
 # Create your models here.
 
 
-class user_info(models.Model):
+class UserInfo(models.Model):
     name = models.CharField(max_length=30)
     phone_number = models.CharField(max_length=15)
 
