@@ -1,0 +1,14 @@
+{% extends 'curd/user_information.html' %}
+{% block title %} Update List View {% endblock title %} 
+
+{% block content %}
+
+<form method="post">
+    <h1>Update Phone Information</h1>
+    {% csrf_token %}
+    {{ form }}
+    <button class="update-btn" type="submit">Update</button>
+    <a class="btn" href="{% url 'contact_list' %}">Back </a>
+</form>
+
+{% endblock content %}

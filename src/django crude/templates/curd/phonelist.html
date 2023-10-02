@@ -1,0 +1,25 @@
+{% extends 'curd/user_information.html' %}
+{% block title %} Contact List View {% endblock title %} 
+
+{% block content %}
+
+<h1>Contact List</h1> 
+<a href="{% url 'user_information' %}" class="btn">Add</a> <br> <br>
+<div class="posts-div">
+    {% for phone in phn_list %}
+        <div class="post-data">
+            <div class="name">{{ phone.name }}</div>
+            <div class="phone-number">{{ phone.phone_number }}</div><br>
+            <div class="actions">
+                <a href="{% url 'update_contact' phone.pk %}" class="update-btn">Update</a>
+                <a href="{% url 'delete_contact' phone.pk %}" class="delete-btn">Delete</a>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+
+{% endblock content %}
+
+
+
+
