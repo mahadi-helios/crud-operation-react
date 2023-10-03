@@ -3,13 +3,15 @@ import { useNavigate, useParams } from "react-router-dom";
 import useForm from "./UseForm";
 import { addContact, getListContactId, editContact } from "../LocalStroge/SaveData";
 import axios from "axios";
+import { useLocation } from 'react-router-dom';
 
 export default function AddForm() {
 
   const navigate = useNavigate();
   const { id } = useParams();
   const [aleart, setAleart] = useState();
-
+  const location = useLocation();
+  const contactData = location.state;
 
   const { inputValues, handleInputChange, resetForm, setForm } = useForm({
     name: "",
@@ -23,7 +25,14 @@ export default function AddForm() {
       }, 3000);
       return () => clearTimeout(timeoutId);
     }
-  }, [id,aleart]);
+    if (contactData) {
+           setForm({
+             name: contactData.name,
+             number: formatPhoneNumberForDisplay(contactData.phone_number),
+           });
+         } 
+  }, [id,aleart,contactData]);
+  
   
   const formatPhoneNumberForDisplay = (phoneNumber) => {
     // Convert "+8801xxxxxxxxx" to "01xxxxxxxxx" for display
@@ -52,7 +61,8 @@ export default function AddForm() {
             phone_number: phoneNumberForStorage,
           })
           .then(function (response) {
-            console.log(response.data);
+            console.log(()=>response.data);
+
           })
           .catch(function (error) {
             console.log(error);
@@ -86,6 +96,8 @@ export default function AddForm() {
         setAleart({ type: "error", message: "Please enter a valid 11-digit Bangladesh phone number starting with '01'." });
     }
   };
+
+  
 
   return (
     <>

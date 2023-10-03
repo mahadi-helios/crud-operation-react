@@ -9,7 +9,7 @@ export default function ListOfContact (){
   const [contacts, setContacts] = useState([]);
   const navigate = useNavigate();
   const [aleart, setAlert] = useState();
-
+  
 
   // Fetch the list of contacts when the component mounts
   useEffect(() => {
@@ -74,7 +74,7 @@ export default function ListOfContact (){
             <div className="post-data" key={id}>
               <h4 className="name">Name: {contact.name}</h4>
               <p className="phone-number">Number: {contact.phone_number}</p>
-              <button className="update-btn" onClick={() => navigate(`/edit-user/${contact.id}`)}>Update</button>
+              <button className="update-btn" onClick={(e) =>  {navigate(`/edit-user/${contact.id}`,{ state: contact }) , e.target.value}}>Update</button>
               <button className="delete-btn" onClick={() => removeContact(contact.id)}>Delete</button> 
             </div>
           ))}
