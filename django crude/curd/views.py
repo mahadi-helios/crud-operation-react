@@ -3,7 +3,7 @@ from rest_framework.generics import ListAPIView
 from rest_framework.generics import CreateAPIView
 from rest_framework.generics import DestroyAPIView
 from rest_framework.generics import UpdateAPIView
-from curd.serializer import user_serializer_form
+from curd.serializer import UserSerializerForm
 from curd.models import UserInfo
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
@@ -11,7 +11,7 @@ from rest_framework.decorators import api_view
 # Create your views here.
 
 @api_view(['GET'])
-def all_data_overview(request):
+def AllDataOverview(request):
     api_urls={
         'contact_list' : '/list/',
         'create'       : '/create/',
@@ -21,22 +21,22 @@ def all_data_overview(request):
     return Response(api_urls)
 
 
-class contact_api_list_view(ListAPIView):
+class ContactApiListView(ListAPIView):
     queryset = UserInfo.objects.all()
-    serializer_class = user_serializer_form
+    serializer_class = UserSerializerForm
 
 
-class contact_api_create_view(CreateAPIView):
+class ContactApiCreateView(CreateAPIView):
     queryset = UserInfo.objects.all()
-    serializer_class = user_serializer_form
+    serializer_class = UserSerializerForm
 
-class contact_api_update_view(UpdateAPIView):
+class ContactApiUpdateView(UpdateAPIView):
     queryset = UserInfo.objects.all()
-    serializer_class = user_serializer_form
+    serializer_class = UserSerializerForm
 
-class contact_api_delete_view(DestroyAPIView):
+class ContactApiDeleteView(DestroyAPIView):
     queryset = UserInfo.objects.all()
-    serializer_class = user_serializer_form
+    serializer_class = UserSerializerForm
 
 
 

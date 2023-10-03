@@ -3,11 +3,11 @@ from curd import views
 
 urlpatterns = [
     #''' ClassBased api'''
-    path('',views.all_data_overview,name="api_urls"),
-    path("list/",views.contact_api_list_view.as_view(),name="contact_list"),
-    path("create/", views.contact_api_create_view.as_view(),name="contact_create"),
-    path("update/<int:pk>/",views.contact_api_update_view.as_view(),name="update_contact"),
-    path("delete/<int:pk>/",views.contact_api_delete_view.as_view(),name="delete_delete")
+    path('',views.AllDataOverview,name="api_urls"),
+    path("list/",views.ContactApiListView.as_view(),name="contact_list"),
+    path("create/", views.ContactApiCreateView.as_view(),name="contact_create"),
+    path("update/<int:pk>/",views.ContactApiUpdateView.as_view(),name="update_contact"),
+    path("delete/<int:pk>/",views.ContactApiDeleteView.as_view(),name="delete_delete")
 
 
     #''' Function base api '''

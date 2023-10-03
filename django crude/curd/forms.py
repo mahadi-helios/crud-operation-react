@@ -1,11 +1,11 @@
 from django import forms
-from curd.models import user_info
+from curd.models import UserInfo
 from django.core.validators import RegexValidator
 
 
 class UserInfoForm(forms.ModelForm):
     class Meta:
-        model = user_info
+        model = UserInfo
         fields = ['name', 'phone_number']
     
     phone_regex = RegexValidator(
