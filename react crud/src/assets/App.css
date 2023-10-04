@@ -6,7 +6,7 @@
 /* reset code end  */
 
 body {
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: "Gill Sans Extrabold", sans-serif;
     color:#212529;
 }
 
@@ -14,7 +14,7 @@ form {
     /* max-width: 300px; */
     margin: 10px auto;
     padding: 10px 20px;
-    background: #b2ccd5;
+    background: #ffc3a0;
     border-radius: 8px;
     margin-top: 40px;
     box-sizing: border-box;
@@ -37,14 +37,13 @@ h1 {
 
 input[type="text"] {
     background:  rgba(255, 255, 255, 0.1);
-    border:  none;
+    border:  1px solid #ee9ca7;
     font-size: 16px;
     height: auto;
     outline: 0;
     padding: 15px;
     width: 100%;
-    background-color:#e8eeef;
-    color:#8a97a0;
+    background-color:#ffc3a0;
     box-shadow: 0 1px 0 rgba(0, 0, 0, 0.03) inset;
     margin-bottom: 30px;
     box-sizing:  border-box;
@@ -55,8 +54,8 @@ input[type="text"] {
     border-radius: 5px;
     cursor: pointer;
     font-size: 15px;
-    color: whitesmoke;
-    background-color: #008CBA;
+    color: white;
+    background-color: #de6262 ;
     border: none;
     text-decoration: none;
     display: inline-block;
@@ -67,6 +66,7 @@ input[type="text"] {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    box-sizing: border-box;
 }
 
 .post-data {
@@ -75,6 +75,9 @@ input[type="text"] {
     box-shadow: 0 4px 8px 0 rgb(0, 0,0,0.2);
     padding: 1rem;
     transition: all 0.4s;
+    box-sizing: border-box;
+    background-color: #b9d8c270;
+    
 }
 
 .post-data:hover{
@@ -114,8 +117,8 @@ input[type="text"] {
     border-radius: 5px;
     cursor: pointer;
     font-size: 15px;
-    color: whitesmoke;
-    background-color:#0f0f0f;;
+    color: white;
+    background-color:#f45c43;;
     margin-left: 20px;
     border: none;
 }
@@ -133,11 +136,35 @@ input[type="text"] {
     }
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 980px) {
     .post-data {
-        flex-basis: calc(50% - 20px);
-        min-width: calc(50% - 20px); /* Minimum width */
+        max-width: 300px; /* Set your desired fixed width here */
+        flex-basis: 100%; /* Ensure it takes up the full width by default */
+        margin: 0.3rem;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+        padding: 1rem;
+        transition: all 0.4s;
+        box-sizing: border-box;
+    }
+    .phone-number{
+        color: rgb(7, 7, 7);
+    }
+    .name{
+        color: rgb(7, 7, 7);
+    }
+    form{
+        background: #91AA9D;
+    }
+    input[type="text"] {
+        background:  #91AA9D;
+        border: 1px solid black;
+    }
+    
+    .button1{
+        background-color: #3E606F;
     }
 }
+
+
 
 /* responesive en here */

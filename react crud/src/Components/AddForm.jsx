@@ -134,10 +134,10 @@ export default function AddForm() {
 
   return (
     <>
+    <form onSubmit={handleFormSubmit}>
       <h1>User {id ? "Edit" : "Create"} Information</h1>
-      <form onSubmit={handleFormSubmit}>
         <div>
-          <label htmlFor="username">Username:</label>
+          <label htmlFor="username">Username:</label> 
           <input
             type="text"
             name="name"
@@ -148,7 +148,7 @@ export default function AddForm() {
           />
         </div>
         <div>
-          <label htmlFor="usernumber">User Number (BD Only - 11 digits):</label>
+          <label htmlFor="usernumber">User Number (BD Only - 11 digits):</label> 
           <input
             type="text"
             name="number"
