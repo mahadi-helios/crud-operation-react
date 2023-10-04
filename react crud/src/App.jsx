@@ -1,6 +1,6 @@
 import './assets/App.css'
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import AddForm from './Components/AddForm';
+import AddContact from './Pages/AddContact';
 
 
 export default function App (){
@@ -9,9 +9,9 @@ export default function App (){
         <BrowserRouter>
             <div className="container">
               <Routes> 
-                  <Route path="/" element={<AddForm />} />
-                  <Route path="/contact-list" element={< AddForm/>} />
-                  <Route path="/edit-user/:id" element={<AddForm />} />
+                  <Route path="/" element={<AddContact />} />
+                  <Route path="/contact-list" element={< AddContact/>} />
+                  <Route path="/edit-user/:id" element={<AddContact />} />
               </Routes>
             </div>
         </BrowserRouter>
@@ -35,6 +35,28 @@ export default function App (){
 
 
 
+////////////////////////'''one componets use app.js ''''''''''''''''''''''''''''
+// import './assets/App.css'
+// import { BrowserRouter, Routes, Route } from 'react-router-dom';
+// import AddForm from './Components/AddForm';
+
+
+// export default function App (){
+//   return (
+//     <>
+//         <BrowserRouter>
+//             <div className="container">
+//               <Routes> 
+//                   <Route path="/" element={<AddForm />} />
+//                   <Route path="/contact-list" element={< AddForm/>} />
+//                   <Route path="/edit-user/:id" element={<AddForm />} />
+//               </Routes>
+//             </div>
+//         </BrowserRouter>
+
+//     </>
+//   );
+// }
 
 
 
@@ -46,6 +68,22 @@ export default function App (){
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//////////////////////''''''''''''''''''''pervious code'''''''''''''''''''''''''''''
 // import './assets/App.css'
 // import { BrowserRouter, Routes, Route } from 'react-router-dom';
 // import AddForm from './Components/AddForm';

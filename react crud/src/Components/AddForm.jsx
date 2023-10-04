@@ -1,198 +1,200 @@
-import React, { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
-import useForm from "./UseForm";
-import axios from "axios";
-import { useLocation } from 'react-router-dom';
 
-export default function AddForm() {
+///''''''''''''''''''''''''''''''''''one components use form'''''''''''''''''''''''''''''''
+// import React, { useEffect, useState } from "react";
+// import { useNavigate, useParams } from "react-router-dom";
+// import useForm from "./UseForm";
+// import axios from "axios";
+// import { useLocation } from 'react-router-dom';
 
-  const navigate = useNavigate();
-  const { id } = useParams();
-  const location = useLocation();
-  const contactData = location.state;
-  const [alert, setAlert] = useState(null);
-  const [contacts, setContacts] = useState([]); // Array to store the contact list
-  const { inputValues, handleInputChange, resetForm, setForm } = useForm({
-    name: "",
-    number: "",
-  });
+// export default function AddForm() {
 
-
-  useEffect(() => {
-    if (alert) {
-      const timeoutId = setTimeout(() => {
-        setAlert(null);
-      }, 1000);
-      return () => clearTimeout(timeoutId);
-    }
-    if (contactData) {
-      setForm({ 
-        name: contactData.name,
-        number: formatPhoneNumberForDisplay(contactData.phone_number),
-      });
-    }
-  }, [id, alert, contactData]);
+//   const navigate = useNavigate();
+//   const { id } = useParams();
+//   const location = useLocation();
+//   const contactData = location.state;
+//   const [alert, setAlert] = useState(null);
+//   const [contacts, setContacts] = useState([]); // Array to store the contact list
+//   const { inputValues, handleInputChange, resetForm, setForm } = useForm({
+//     name: "",
+//     number: "",
+//   });
 
 
-  useEffect(() => {
-    axios.get('http://127.0.0.1:8000/list/') // Fetch the contact list when the component mounts
-      .then(function (response) {
-        setContacts(response.data);
-      })
-      .catch(function (error) {
-        console.log(error);
-      })
-      .finally(function () {
-      })
-  }, []);
+//   useEffect(() => {
+//     if (alert) {
+//       const timeoutId = setTimeout(() => {
+//         setAlert(null);
+//       }, 1000);
+//       return () => clearTimeout(timeoutId);
+//     }
+//     if (contactData) {
+//       setForm({ 
+//         name: contactData.name,
+//         number: formatPhoneNumberForDisplay(contactData.phone_number),
+//       });
+//     }
+//   }, [id, alert, contactData]);
 
 
-  const formatPhoneNumberForDisplay = (phoneNumber) => {
-    return phoneNumber.replace("+880", "0");
-  };
+//   useEffect(() => {
+//     axios.get('http://127.0.0.1:8000/list/') // Fetch the contact list when the component mounts
+//       .then(function (response) {
+//         setContacts(response.data);
+//       })
+//       .catch(function (error) {
+//         console.log(error);
+//       })
+//       .finally(function () {
+//       })
+//   }, []);
 
-  const formatPhoneNumberForStorage = (phoneNumber) => {
-    return phoneNumber.replace(/^0/, "+880");
-  };
+
+//   const formatPhoneNumberForDisplay = (phoneNumber) => {
+//     return phoneNumber.replace("+880", "0");
+//   };
+
+//   const formatPhoneNumberForStorage = (phoneNumber) => {
+//     return phoneNumber.replace(/^0/, "+880");
+//   };
 
 
-  const removeContact = (id) => {
+//   const removeContact = (id) => {
 
-    axios.delete(`http://127.0.0.1:8000/delete/${id}/`)
-    .then(function (response) {
-      console.log(response.data);
-      setContacts((prevContacts) => prevContacts.filter((contact) => contact.id !== id));
-    })
-    .catch(function (error) {
-      console.log(error);
-    })
-    .finally(function () {
-    })
-    setAlert({ type: "error", message: "Data delete successfully !" });
+//     axios.delete(`http://127.0.0.1:8000/delete/${id}/`)
+//     .then(function (response) {
+//       console.log(response.data);
+//       setContacts((prevContacts) => prevContacts.filter((contact) => contact.id !== id));
+//     })
+//     .catch(function (error) {
+//       console.log(error);
+//     })
+//     .finally(function () {
+//     })
+//     setAlert({ type: "error", message: "Data delete successfully !" });
 
-    };
+//     };
 
-  const handleFormSubmit = async (event) => {
+//   const handleFormSubmit = async (event) => {
 
-    event.preventDefault();
-    const bdPhoneNumber = /^01\d{9}$/.test(inputValues.number);
-    setAlert(null);
+//     event.preventDefault();
+//     const bdPhoneNumber = /^01\d{9}$/.test(inputValues.number);
+//     setAlert(null);
 
-    try {
+//     try {
 
-      if (bdPhoneNumber) {
-        const phoneNumberForStorage = formatPhoneNumberForStorage(inputValues.number);
-        if (id) {
-          const updateResponse = await axios.put(`http://127.0.0.1:8000/update/${id}/`, {
-            name: inputValues.name,
-            phone_number: phoneNumberForStorage,
-          })
-          .then(function (response) {
-            console.log(response.data);
+//       if (bdPhoneNumber) {
+//         const phoneNumberForStorage = formatPhoneNumberForStorage(inputValues.number);
+//         if (id) {
+//           const updateResponse = await axios.put(`http://127.0.0.1:8000/update/${id}/`, {
+//             name: inputValues.name,
+//             phone_number: phoneNumberForStorage,
+//           })
+//           .then(function (response) {
+//             console.log(response.data);
             
-            })
-          .catch(function (error) {
-            console.log(error);
-            })
-          .finally(function () {
-            })  
-            // console.log(updateResponse);
-        } else {
-          const createResponse = await axios.post('http://127.0.0.1:8000/create/', {
-            name: inputValues.name,
-            phone_number: phoneNumberForStorage,
-          })
-          .then(function (response) {
-            console.log(response.data);
+//             })
+//           .catch(function (error) {
+//             console.log(error);
+//             })
+//           .finally(function () {
+//             })  
+//             // console.log(updateResponse);
+//         } else {
+//           const createResponse = await axios.post('http://127.0.0.1:8000/create/', {
+//             name: inputValues.name,
+//             phone_number: phoneNumberForStorage,
+//           })
+//           .then(function (response) {
+//             console.log(response.data);
             
-            })
-          .catch(function (error) {
-            console.log(error);
-            })
-          .finally(function () {
-            })  
-        //   console.log(createResponse);
-        }
-        navigate('/')
-        resetForm();
-        setAlert({ type: "success", message: id ? "Your data updated successfully!" : "Your data created successfully!" });
+//             })
+//           .catch(function (error) {
+//             console.log(error);
+//             })
+//           .finally(function () {
+//             })  
+//         //   console.log(createResponse);
+//         }
+//         navigate('/')
+//         resetForm();
+//         setAlert({ type: "success", message: id ? "Your data updated successfully!" : "Your data created successfully!" });
         
-        // create and update show data in contact list
-        const updatedContactList = await axios.get('http://127.0.0.1:8000/list/');
-        setContacts(updatedContactList.data);
-        navigate('/')
+//         // create and update show data in contact list
+//         const updatedContactList = await axios.get('http://127.0.0.1:8000/list/');
+//         setContacts(updatedContactList.data);
+//         navigate('/')
 
-      } else {
-        setAlert({ type: "error", message: "Please enter a valid 11-digit Bangladesh phone number starting with '01'." });
-      }
-    } catch (error) {
-      console.error(error);
-      setAlert({ type: "error", message: "An error occurred while saving the data." });
-    }
-  };
+//       } else {
+//         setAlert({ type: "error", message: "Please enter a valid 11-digit Bangladesh phone number starting with '01'." });
+//       }
+//     } catch (error) {
+//       console.error(error);
+//       setAlert({ type: "error", message: "An error occurred while saving the data." });
+//     }
+//   };
 
-  return (
-    <>
-    <form onSubmit={handleFormSubmit}>
-      <h1>User {id ? "Edit" : "Create"} Information</h1>
-        <div>
-          <label htmlFor="username">Username:</label> 
-          <input
-            type="text"
-            name="name"
-            value={inputValues.name}
-            onChange={handleInputChange}
-            id="username"
-            required
-          />
-        </div>
-        <div>
-          <label htmlFor="usernumber">User Number (BD Only - 11 digits):</label> 
-          <input
-            type="text"
-            name="number"
-            value={formatPhoneNumberForDisplay(inputValues.number)}
-            onChange={handleInputChange}
-            id="usernumber"
-            required
-          />
-        </div>
-        {alert && (
-          <div className={`alert ${alert.type} danger ,success `}>
-            {alert.message}
-          </div>
-        )}
-        <button className="button1" type="submit">
-          Submit
-        </button>
-        <button  className="btn" onClick={() => resetForm()}>
-            Clear
-        </button>
-      </form>
+//   return (
+//     <>
+//     <form onSubmit={handleFormSubmit}>
+//       <h1>User {id ? "Edit" : "Create"} Information</h1>
+//         <div>
+//           <label htmlFor="username">Username:</label> 
+//           <input
+//             type="text"
+//             name="name"
+//             value={inputValues.name}
+//             onChange={handleInputChange}
+//             id="username"
+//             required
+//           />
+//         </div>
+//         <div>
+//           <label htmlFor="usernumber">User Number (BD Only - 11 digits):</label> 
+//           <input
+//             type="text"
+//             name="number"
+//             value={formatPhoneNumberForDisplay(inputValues.number)}
+//             onChange={handleInputChange}
+//             id="usernumber"
+//             required
+//           />
+//         </div>
+//         {alert && (
+//           <div className={`alert ${alert.type} danger ,success `}>
+//             {alert.message}
+//           </div>
+//         )}
+//         <button className="button1" type="submit">
+//           Submit
+//         </button>
+//         <button  className="btn" onClick={() => resetForm()}>
+//             Clear
+//         </button>
+//     </form>
 
-       <br/>     
-      <h1>Contact List</h1>
-      {contacts.length > 0 ? (
-        <div className="posts-div">
-          {contacts.map((contact) => (
-            <div className="post-data" key={contact.id}>
-              <h4 className="name">Name: {contact.name}</h4>
-              <p className="phone-number">Number: {contact.phone_number}</p>
-              <button className="update-btn" onClick={() => navigate(`/edit-user/${contact.id}`, {state: contact})}>
-                Update
-              </button>
-              <button className="delete-btn" onClick={()=> removeContact(contact.id) }>
-                Delete
-              </button>
-            </div>
-          ))}
-        </div>
-      ) : (
-        <p className="aleart">No Contact Here</p>
-      )}
-    </>
-  );
-}
+//     <br/>     
+//       <h1>Contact List</h1>
+//       {contacts.length > 0 ? (
+//         <div className="posts-div">
+//           {contacts.map((contact) => (
+//             <div className="post-data" key={contact.id}>
+//               <h4 className="name">Name: {contact.name}</h4>
+//               <p className="phone-number">Number: {contact.phone_number}</p>
+//               <button className="update-btn" onClick={() => navigate(`/edit-user/${contact.id}`, {state: contact})}>
+//                 Update
+//               </button>
+//               <button className="delete-btn" onClick={()=> removeContact(contact.id) }>
+//                 Delete
+//               </button>
+//             </div>
+//           ))}
+//         </div>
+//       ) : (
+//         <p className="aleart">No Contact Here</p>
+//       )}
+//     </>
+//   );
+// }
 
 
 
