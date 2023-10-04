@@ -89,7 +89,7 @@ export default function AddForm() {
             phone_number: phoneNumberForStorage,
           })
           .then(function (response) {
-            console.log(()=>response.data);
+            console.log(response.data);
             
             })
           .catch(function (error) {
@@ -97,14 +97,14 @@ export default function AddForm() {
             })
           .finally(function () {
             })  
-          console.log(updateResponse);
+            // console.log(updateResponse);
         } else {
           const createResponse = await axios.post('http://127.0.0.1:8000/create/', {
             name: inputValues.name,
             phone_number: phoneNumberForStorage,
           })
           .then(function (response) {
-            console.log(()=>response.data);
+            console.log(response.data);
             
             })
           .catch(function (error) {
@@ -112,7 +112,7 @@ export default function AddForm() {
             })
           .finally(function () {
             })  
-          console.log(createResponse);
+        //   console.log(createResponse);
         }
         navigate('/')
         resetForm();
@@ -159,7 +159,7 @@ export default function AddForm() {
           />
         </div>
         {alert && (
-          <div className={`alert ${alert.type}`}>
+          <div className={`alert ${alert.type} danger ,success `}>
             {alert.message}
           </div>
         )}
@@ -171,7 +171,7 @@ export default function AddForm() {
         </button>
       </form>
 
-
+       <br/>     
       <h1>Contact List</h1>
       {contacts.length > 0 ? (
         <div className="posts-div">
