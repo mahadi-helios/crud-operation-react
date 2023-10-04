@@ -31,6 +31,7 @@ function UserForm({ inputValues, handleFormSubmit, handleInputChange, resetForm,
           {alert.message}
         </div>
       )}
+      <br />
       <button className="button1" type="submit">
         Submit
       </button>
