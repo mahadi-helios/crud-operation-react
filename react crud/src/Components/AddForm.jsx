@@ -43,7 +43,6 @@ export default function AddForm() {
         console.log(error);
       })
       .finally(function () {
-        // always executed
       })
   }, []);
 

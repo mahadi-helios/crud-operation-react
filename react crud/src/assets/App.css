@@ -131,11 +131,13 @@ input[type="text"] {
 .danger {
     background-color: #ffdddd;
     border-left: 6px solid #f44336;
+    color: #001524;
 }
 
 .success {
     background-color: #ffdddd;
     border-left: 6px solid #036603;
+    color: #001524;
 }
 
 
