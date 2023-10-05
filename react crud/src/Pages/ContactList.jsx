@@ -23,7 +23,7 @@ function ContactList({ contacts, navigate, removeContact }) {
           ))}
         </div>
       ) : (
-        <p className="alert">No Contact Here</p>
+        <p>No Contact Here</p>
       )}
     </div>
   );
