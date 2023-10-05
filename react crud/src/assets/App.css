@@ -2,6 +2,7 @@
 *{
     padding: 0;
     margin: 0;
+    background-color: #10161c;
 }
 /* reset code end  */
 
@@ -14,53 +15,85 @@ body {
 form {
     margin: 10px auto;
     padding: 10px 20px;
-    background: #1F4172;
-    border-radius: 8px;
+    background: #001524;
+    border-radius: 20px;
     margin-top: 40px;
+    margin-bottom: 40px;
+    padding-bottom: 40px;
     box-sizing: border-box;
+    box-shadow: 0 0px 20px 0 rgb(115, 95,87,3.8);
 }
 
-h1 {
+.form-header{
     margin-bottom: 30px;
     text-align: center;
     text-transform: capitalize;
     margin-top: 20px;
+    background: #001524;
+}
+
+.contact-header{
+    margin-bottom: 30px;
+    text-align: center;
+    text-transform: capitalize;
+    margin-top: 20px;
+    border-bottom: #3E606F;
+    text-decoration: overline ;
+    text-decoration-color: #02385f;
+}
+
+.label1{
+    background: #001524;
+    
+}
+.label-back{
+    background-color: #001524;
 }
 
 .name {
     font-weight: bold;
     color: #ffdddd;
+    background-color: #001524;
+    
 }
+
+
 
 .phone-number {
     color: #ffdddd;
+    background-color: #001524;
 }
 
 input[type="text"] {
     background:  rgba(255, 255, 255, 0.1);
-    border:  1px solid #212529;
+    border: none;
+    border-bottom:  1px solid #212529;
     font-size: 16px;
     height: auto;
     outline: 0;
     padding: 15px;
+    cursor: pointer;
     width: 100%;
-    background-color:#1F4172;
+    color: #FFF;
+    background-color:#001524;
     box-shadow: 0 1px 0 rgba(0, 0, 0, 0.03) inset;
     margin-bottom: 30px;
     box-sizing:  border-box;
 }
 
+
 .button1 {
     padding: 10px;
-    border-radius: 5px;
-    cursor: pointer;
+    border-radius: 10px;
+    cursor: move;
     font-size: 15px;
     color: white;
-    background-color: #de6262 ;
+    background-color: #072059;
     border: none;
     text-decoration: none;
     display: inline-block;
-    width: 30%;
+    margin-left: 40px;
+    width: 80%;
 }
 
 .posts-div {
@@ -94,7 +127,7 @@ input[type="text"] {
     font-size: 15px;
     color: whitesmoke;
     border: none;
-    background-color: #4CAF50;
+    background-color: #1a4f1c;
     margin-top: 25px;
     text-decoration: none;
 }
@@ -108,21 +141,22 @@ input[type="text"] {
     font-size: 15px;
     color: whitesmoke;
     border: none;
-    background-color: #880d04;
+    background-color: #410f07;
     margin-top: 25px;
     margin-left: 20px;
 }
 
-.btn {
+/* .btn {
     padding: 10px;
     border-radius: 5px;
     cursor: pointer;
     font-size: 15px;
     color: white;
-    background-color:#f45c43;;
-    margin-left: 20px;
+    background-color: #410f07;
+    margin-left: 192px;
     border: none;
-}
+    margin-top: 25px;
+} */
 
 .aleart{
     text-align: center;  
@@ -158,23 +192,7 @@ input[type="text"] {
         padding: 1rem;
         transition: all 0.4s;
         box-sizing: border-box;
-        background-color: #141E46;
-    }
-    .phone-number{
-        color: rgb(255, 255, 255);
-    }
-    .name{
-        color: rgb(255, 255, 255);
-    }
-    form{
-        background: #EF9595;
-    }
-    input[type="text"] {
-        background:  #EF9595;
-        border: 1px solid black;
-    }
-    .button1{
-        background-color: #3E606F;
+        background-color: #001524;
     }
 }
 

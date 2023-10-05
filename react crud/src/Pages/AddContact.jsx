@@ -122,7 +122,7 @@ export default function AddForm() {
         const updatedContactList = await axios.get('http://127.0.0.1:8000/list/');
         setContacts(updatedContactList.data);
         navigate('/')
-
+   
       } else {
         setAlert({ type: "error", message: "Please enter a valid 11-digit Bangladesh phone number starting with '01'." });
       }
