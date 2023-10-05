@@ -83,7 +83,7 @@ input[type="text"] {
 }
 
 .post-data:hover{
-    box-shadow: 0 8px 16px 0 rgb(0, 0,0,0.2);
+    box-shadow: 0 8px 16px 0 rgb(0, 0,0,0.8);
 }
 
 .update-btn {
