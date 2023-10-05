@@ -54,8 +54,8 @@ form {
     font-weight: bold;
     color: #ffdddd;
     background-color: #001524;
-    
 }
+
 p{
     text-align: center;
 }
@@ -63,6 +63,7 @@ p{
 .phone-number {
     color: #ffdddd;
     background-color: #001524;
+    text-align: inherit;
 }
 
 input[type="text"] {
@@ -86,7 +87,6 @@ input[type="text"] {
 .button1 {
     padding: 10px;
     border-radius: 10px;
-    cursor: move;
     font-size: 15px;
     color: white;
     background-color: #072059;
