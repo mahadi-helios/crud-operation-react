@@ -5,6 +5,8 @@ import { useLocation } from "react-router-dom";
 import ContactList from "./ContactList";
 import UserForm from "./UserForm";
 import useForm from "../Components/UseForm";
+// import { apiUrl } from "./Config";
+
 
 export default function AddForm() {
   const navigate = useNavigate();
@@ -18,6 +20,8 @@ export default function AddForm() {
     number: "",
   });
 
+  // Define the API base URL from the environment variable
+  const apiBaseUrl = import.meta.env.VITE_API_URL;
 
   useEffect(() => {
     if (alert) {
@@ -36,7 +40,8 @@ export default function AddForm() {
 
 
   useEffect(() => {
-    axios.get('http://127.0.0.1:8000/list/') // Fetch the contact list when the component mounts
+    // Use the API base URL defined from the environment variable
+    axios.get(`${apiBaseUrl}/list/`)
       .then(function (response) {
         setContacts(response.data);
       })
@@ -45,7 +50,7 @@ export default function AddForm() {
       })
       .finally(function () {
       })
-  }, []);
+  }, [apiBaseUrl]);
 
 
   const formatPhoneNumberForDisplay = (phoneNumber) => {
@@ -59,7 +64,7 @@ export default function AddForm() {
 
   const removeContact = (id) => {
 
-    axios.delete(`http://127.0.0.1:8000/delete/${id}/`)
+    axios.delete(`${apiBaseUrl}/delete/${id}/`)
     .then(function (response) {
       console.log(response.data);
       setContacts((prevContacts) => prevContacts.filter((contact) => contact.id !== id));
@@ -84,7 +89,7 @@ export default function AddForm() {
       if (bdPhoneNumber) {
         const phoneNumberForStorage = formatPhoneNumberForStorage(inputValues.number);
         if (id) {
-          const updateResponse = await axios.put(`http://127.0.0.1:8000/update/${id}/`, {
+          const updateResponse = await axios.put(`${apiBaseUrl}/update/${id}/`, {
             name: inputValues.name,
             phone_number: phoneNumberForStorage,
           })
@@ -99,7 +104,7 @@ export default function AddForm() {
             })  
             // console.log(updateResponse);
         } else {
-          const createResponse = await axios.post('http://127.0.0.1:8000/create/', {
+          const createResponse = await axios.post(`${apiBaseUrl}/create/`, {
             name: inputValues.name,
             phone_number: phoneNumberForStorage,
           })
@@ -119,7 +124,7 @@ export default function AddForm() {
         setAlert({ type: "success", message: id ? "Your data updated successfully!" : "Your data created successfully!" });
         
         // create and update show data in contact list
-        const updatedContactList = await axios.get('http://127.0.0.1:8000/list/');
+        const updatedContactList = await axios.get(`${apiBaseUrl}/list/`);
         setContacts(updatedContactList.data);
         navigate('/')
    
