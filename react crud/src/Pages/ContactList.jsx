@@ -3,9 +3,9 @@ import React from "react";
 function ContactList({ contacts, navigate, removeContact }) {
   return (
     <>
-      <div className="contact-div">
-        <h1 className="contact-header">Contact List</h1>
-        {contacts.length > 0 ? (
+      <div class="contact-list">
+        <h1 class="contact-header">Contact List</h1>
+            {contacts.length > 0 ? (
           <div className="table-container">
             <div class="table">
               <div className="table-row header">
@@ -33,7 +33,6 @@ function ContactList({ contacts, navigate, removeContact }) {
           <p className="no-contact">No Contact Here</p>
         )}
       </div>
-   
    </>
   );
 }
