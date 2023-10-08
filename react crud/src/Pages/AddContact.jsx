@@ -118,14 +118,14 @@ export default function AddForm() {
             })  
         //   console.log(createResponse);
         }
-        navigate('/')
+        navigate('/contact-list')
         resetForm();
         setAlert({ type: "success", message: id ? "Your data updated successfully!" : "Your data created successfully!" });
         
         // create and update show data in contact list
         const updatedContactList = await axios.get(`${apiBaseUrl}/list/`);
         setContacts(updatedContactList.data);
-        navigate('/')
+        navigate('/contact-list')
    
       } else {
         setAlert({ type: "error", message: "Please enter a valid 11-digit Bangladesh phone number starting with '01'." });
@@ -153,6 +153,9 @@ export default function AddForm() {
         navigate={navigate}
         removeContact={removeContact}
       />
+      <div className="button-div">
+          <button type="submite"  className="logout" onClick={()=> navigate('/')} >Logout</button> 
+      </div>
     </>
   );
 }

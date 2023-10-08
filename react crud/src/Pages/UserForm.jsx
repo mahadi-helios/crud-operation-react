@@ -1,6 +1,8 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 function UserForm({ inputValues, handleFormSubmit, handleInputChange, resetForm, alert }) {
+  const navigate = useNavigate();
   return (
     <>
       <div class="contact-form">
@@ -37,6 +39,9 @@ function UserForm({ inputValues, handleFormSubmit, handleInputChange, resetForm,
           <button className="button1" type="submit">
             Submit
           </button>
+          {/* <button className="button1" type="submit" onClick={()=>navigate('/all-contact')}>
+            List
+          </button> */}
         </form>
       </div>
     </>

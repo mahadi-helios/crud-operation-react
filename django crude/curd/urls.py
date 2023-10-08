@@ -4,6 +4,9 @@ from curd import views
 urlpatterns = [
     #''' ClassBased api'''
     path('',views.AllDataOverview,name="api_urls"),
+    path('singup/', views.SignupUserView.as_view(), name='singup'),
+    path('singin/', views.SigninUserView.as_view(), name='singin'),
+    path('logout/', views.LogoutUserView.as_view(), name='logout'),
     path("list/",views.ContactApiListView.as_view(),name="contact_list"),
     path("create/", views.ContactApiCreateView.as_view(),name="contact_create"),
     path("update/<int:pk>/",views.ContactApiUpdateView.as_view(),name="update_contact"),

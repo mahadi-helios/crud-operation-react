@@ -1,0 +1,58 @@
+/* singIn css Start */
+.User-form-header{
+    color: white;
+    
+}
+
+.user-input{
+    width: 50%;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin: 5px;
+    
+}
+
+.btn-auth {
+    padding: 15px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left: 10px;
+    margin-top: 20px;
+    width: 20%;
+}
+.user-form{
+    margin: 10%;
+    text-align: center;
+}
+.singIn-div {
+    background-color: #6C567B;
+    width: inherit;
+}
+.singIn-p{
+    color: white;
+}
+.singIn-a{
+    text-decoration: none;
+    color: rgb(24, 80, 2);
+}
+/* singIn css end  */
+
+
+@media screen and (max-width:980px) {
+    .btn-auth {
+        padding: 15px;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        margin-left: 10px;
+        margin-top: 20px;
+        width: 34%;
+    }   
+}
+

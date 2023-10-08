@@ -16,10 +16,22 @@ body {
     width: 1080px; 
     height: 500px; 
     margin: 20px auto;
-    padding: 20px;
+    padding: 50px;
     background-color: #fff;
     box-shadow: 0px 0px 15px rgba(0, 0, 0, 1.1);
     overflow: hidden; 
+}
+
+.button-div {
+    margin: -40px 0 0 -61px;
+}
+.logout{
+    padding: 10px ;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
 }
 
 /* Contact List */
@@ -145,6 +157,9 @@ input[type="text"] {
         box-sizing: border-box;
         font-size: 11px;
     }
+    .button-div {
+        margin: 9px 0 -13px 2px;
+    }
 
     .update-btn,
     .delete-btn {
@@ -172,6 +187,9 @@ input[type="text"] {
         overflow-x: auto;
         box-sizing: border-box;
         font-size: 11px;
+    }
+    .button-div {
+        margin: 9px 0 -13px 2px;
     }
     .update-btn,
     .delete-btn {

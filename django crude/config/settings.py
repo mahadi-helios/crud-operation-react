@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'curd', #add this app
     'rest_framework', # add this
     'corsheaders', #add this 
+    'rest_framework.authtoken' #add this
 ]
 
 MIDDLEWARE = [
@@ -111,6 +112,22 @@ CORS_ORIGIN_WHITELIST = (
 	'http://localhost:5173',
 )
 
+
+#Django Rest framework
+# REST_FRAMEWORK = {
+#     'DEFAULT_AUTHENTICATION_CLASSES': [
+#         'rest_framework.authentication.TokenAuthentication',
+#     ],
+#     'DEFAULT_PERMISSION_CLASSES': [
+#         'rest_framework.permissions.IsAuthenticated',
+#     ],
+# }
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework.authentication.TokenAuthentication',
+    ),
+}
 
 
 
