@@ -133,11 +133,104 @@ input[type="text"] {
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    margin-left: 8px;
 }
 
 .no-contact{
     text-align: center;
 }
+
+
+/* AllListContact css  */
+.contact-list-all {
+    background: aliceblue;
+    width: 100%;
+    text-align: center;
+    overflow-y: auto;
+}
+
+.table-row.header.color{
+    background-color: #007bff;
+}
+
+
+.contact-all-header {
+    display: inline-block;
+}
+
+.btn-list {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: -4%;
+    display: block;
+    margin-bottom: 7px;
+    margin-left: 5px;
+}
+
+/* Paginator css */
+.pagination{
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+}
+
+.pagination li {
+    margin: 0 5px;
+}
+
+.pagination button {
+    padding: 5px 10px;
+    background: none;
+    color: #000000;
+    border: none;
+    cursor: pointer;
+}
+
+.pagination button.active {
+    background-color: #555;
+}
+
+.pagination button.disabled {
+    cursor: not-allowed;
+    background-color: #ccc;
+    color: #666;
+}
+
+/* paginaor btn css */
+.page-item {
+    display: inline;
+    margin: 0 5px;
+}
+
+.page-link {
+    padding: 5px 10px;
+    color: #000000;
+    border: none;
+    cursor: pointer;
+}
+
+.page-item.active .page-link {
+    background-color: none;
+    border-radius: 5px;
+    color: #000000;
+}
+
+.page-item.disabled .page-link {
+    cursor: not-allowed;
+    background-color: #ffffff;
+    color: #494949;
+    border-radius: 5px;
+}
+
+
+
+
 
 @media screen and (max-width: 768px) {
     .container {

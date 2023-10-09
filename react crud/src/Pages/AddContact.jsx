@@ -77,6 +77,20 @@ export default function AddForm() {
 
     };
 
+
+    ///////////////////////////////cheak////////////////
+    const handleLogout = async () => {
+      try {
+        // Make a request to the logout endpoint
+        await axios.post("/api/logout"); // Replace with your logout endpoint URL
+        // Call the onLogout callback or perform other logout actions
+        onLogout();
+      } catch (error) {
+        console.error("Logout error:", error);
+      }
+    };
+  //////////////////////////////////////////////////////////////////
+
   const handleFormSubmit = async (event) => {
 
     event.preventDefault();
@@ -154,7 +168,7 @@ export default function AddForm() {
         removeContact={removeContact}
       />
       <div className="button-div">
-          <button type="submite"  className="logout" onClick={()=> navigate('/')} >Logout</button> 
+          <button type="submit"  className="logout" onClick={()=> handleLogout()} >Logout</button> 
       </div>
     </>
   );

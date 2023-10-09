@@ -39,9 +39,9 @@ function UserForm({ inputValues, handleFormSubmit, handleInputChange, resetForm,
           <button className="button1" type="submit">
             Submit
           </button>
-          {/* <button className="button1" type="submit" onClick={()=>navigate('/all-contact')}>
+          <button className="button1" type="submit" onClick={()=>navigate('/all-contact')}>
             List
-          </button> */}
+          </button>
         </form>
       </div>
     </>

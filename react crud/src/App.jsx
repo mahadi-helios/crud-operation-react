@@ -4,7 +4,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import AddContact from './Pages/AddContact';
 import SingIn from './Auth/SingIn';
 import SingUp from './Auth/SingUp';
-// import AllListOfContact from './Pages/AllDataView'
+import AllListOfContact from './Pages/AllListOfContact'
 
 
 export default function App (){
@@ -13,9 +13,9 @@ export default function App (){
         <BrowserRouter>
             <div className="container">
               <Routes>
-                  <Route path="/" element={<SingIn />} /> 
+                  <Route path="/" element={<SingIn />} />
                   <Route path="/singUp" element={<SingUp />} />
-                  {/* <Route path="/all-contact" element={<AllListOfContact />} /> */}
+                  <Route path="/all-contact" element={<AllListOfContact />} />
                   <Route path="/contact-form" element={<AddContact />} />
                   <Route path="/contact-list" element={< AddContact/>} />
                   <Route path="/edit-user/:id" element={<AddContact />} />
