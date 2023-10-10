@@ -41,7 +41,11 @@ export default function AddForm() {
 
   useEffect(() => {
     // Use the API base URL defined from the environment variable
-    axios.get(`${apiBaseUrl}/list/`)
+    axios.get(`${apiBaseUrl}/list/`,{
+      headers:{
+        "Authorization" : `Token ${Cookies.get("AuthToken")}`
+      }
+    })
       .then(function (response) {
         setContacts(response.data);
       })
@@ -64,7 +68,11 @@ export default function AddForm() {
 
   const removeContact = (id) => {
 
-    axios.delete(`${apiBaseUrl}/delete/${id}/`)
+    axios.delete(`${apiBaseUrl}/delete/${id}/`,{
+      headers:{
+        "Authorization" : `Token ${Cookies.get("AuthToken")}`
+      }
+    })
     .then(function (response) {
       console.log(response.data);
       setContacts((prevContacts) => prevContacts.filter((contact) => contact.id !== id));
@@ -106,9 +114,13 @@ export default function AddForm() {
       if (bdPhoneNumber) {
         const phoneNumberForStorage = formatPhoneNumberForStorage(inputValues.number);
         if (id) {
-          const updateResponse = await axios.put(`${apiBaseUrl}/update/${id}/`, {
+          const updateResponse = await axios.put(`${apiBaseUrl}/update/${id}/`,{
             name: inputValues.name,
             phone_number: phoneNumberForStorage,
+          },{
+            headers:{
+              "Authorization" : `Token ${Cookies.get("AuthToken")}`
+            }
           })
           .then(function (response) {
             console.log(response.data);
@@ -124,6 +136,10 @@ export default function AddForm() {
           const createResponse = await axios.post(`${apiBaseUrl}/create/`, {
             name: inputValues.name,
             phone_number: phoneNumberForStorage,
+          },{
+            headers:{
+              "Authorization" : `Token ${Cookies.get("AuthToken")}`
+            }
           })
           .then(function (response) {
             console.log(response.data);
@@ -141,7 +157,11 @@ export default function AddForm() {
         setAlert({ type: "success", message: id ? "Your data updated successfully!" : "Your data created successfully!" });
         
         // create and update show data in contact list
-        const updatedContactList = await axios.get(`${apiBaseUrl}/list/`);
+        const updatedContactList = await axios.get(`${apiBaseUrl}/list/`,{
+          headers:{
+            "Authorization" : `Token ${Cookies.get("AuthToken")}`
+          }
+        });
         setContacts(updatedContactList.data);
         navigate('/contact-list')
    

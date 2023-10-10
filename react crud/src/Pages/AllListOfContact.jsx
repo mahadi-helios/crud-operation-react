@@ -3,6 +3,7 @@ import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import Paginator from "./Paginator";
+import Cookies from "js-cookie";
 
 export default function AllListOfContact() {
   const navigate = useNavigate();
@@ -46,7 +47,11 @@ export default function AllListOfContact() {
 
   useEffect(() => {
     // Use the API base URL defined from the environment variable
-    axios.get(`${apiBaseUrl}/list/`)
+    axios.get(`${apiBaseUrl}/list/`,{
+      headers:{
+        "Authorization" : `Token ${Cookies.get("AuthToken")}`
+      }
+    })
       .then(function (response) {
         setContacts(response.data);
       })
@@ -61,7 +66,11 @@ export default function AllListOfContact() {
 
   const removeContact = (id) => {
 
-    axios.delete(`${apiBaseUrl}/delete/${id}/`)
+    axios.delete(`${apiBaseUrl}/delete/${id}/`,{
+      headers:{
+        "Authorization" : `Token ${Cookies.get("AuthToken")}`
+      }
+    })
     .then(function (response) {
       console.log(response.data);
       setContacts((prevContacts) => prevContacts.filter((contact) => contact.id !== id));
