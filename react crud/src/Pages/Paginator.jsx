@@ -9,7 +9,7 @@ const Paginator = ({ totalPages, currentPage, onPageChange }) => {
     const pageNumbers = [];
 
     // Determine the range of page numbers to display (e.g., 1 to 10)
-    const startPage = Math.max(1, currentPage - 5); 
+    const startPage = Math.max(1, currentPage - 2); 
     const endPage = Math.min(totalPages, startPage + 4); 
 
     for (let i = startPage; i <= endPage; i++) {

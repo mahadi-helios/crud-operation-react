@@ -5,6 +5,7 @@ import { useLocation } from "react-router-dom";
 import ContactList from "./ContactList";
 import UserForm from "./UserForm";
 import useForm from "../Components/UseForm";
+import Cookies from "js-cookie";
 
 
 export default function AddForm() {
@@ -78,18 +79,21 @@ export default function AddForm() {
     };
 
 
-    ///////////////////////////////cheak////////////////
-    const handleLogout = async () => {
-      try {
-        // Make a request to the logout endpoint
-        await axios.post("/api/logout"); // Replace with your logout endpoint URL
-        // Call the onLogout callback or perform other logout actions
-        onLogout();
-      } catch (error) {
-        console.error("Logout error:", error);
-      }
-    };
-  //////////////////////////////////////////////////////////////////
+  const handleLogout = async () => {
+
+    try {
+      const response = await axios.post(`${apiBaseUrl}/logout/`,null, {
+        headers:{
+          "Authorization" : `Token ${Cookies.get("AuthToken")}`
+        }
+      })
+      console.log('logout Successfully', response.data);
+      Cookies.remove('AuthToken', response.data.token);
+      navigate('/')
+  } catch (error) {
+      console.error('logout Error :', error)
+  }
+  };
 
   const handleFormSubmit = async (event) => {
 
@@ -166,6 +170,7 @@ export default function AddForm() {
         contacts={contacts}
         navigate={navigate}
         removeContact={removeContact}
+        alert={alert}
       />
       <div className="button-div">
           <button type="submit"  className="logout" onClick={()=> handleLogout()} >Logout</button> 

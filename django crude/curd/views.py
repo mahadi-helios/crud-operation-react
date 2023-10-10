@@ -1,3 +1,4 @@
+from django.http import HttpResponse
 from rest_framework.generics import ListAPIView
 from rest_framework.generics import CreateAPIView
 from rest_framework.generics import DestroyAPIView
@@ -7,18 +8,13 @@ from curd.models import UserInfo
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
 
-
-
-
 from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework.permissions import IsAuthenticated
-from django.contrib.auth.models import User
 from rest_framework.authtoken.models import Token
-from rest_framework.decorators import permission_classes
 from curd.serializer import UserSerializerAuth # Import the UserSerializer
-
+from django.contrib.auth import logout
 
 
 # Create your views here.
@@ -29,7 +25,6 @@ from curd.serializer import UserSerializerAuth # Import the UserSerializer
 def AllDataOverview(request):
     api_urls={
         'singup'       : '/singup/',
-        'singin'       : '/singin/',
         'contact_list' : '/list/',
         'create'       : '/create/',
         'update'       : '/update/<int:pk>/',
@@ -57,10 +52,14 @@ class ContactApiDeleteView(DestroyAPIView):
 
 
 
-#Authentication
 
 
-class SignupUserView(APIView):
+# Authentication
+
+
+class SignupUserView(CreateAPIView):
+    serializer_class = UserSerializerAuth
+    
     def post(self, request):
         serializer = UserSerializerAuth(data=request.data)
         if serializer.is_valid():
@@ -69,25 +68,34 @@ class SignupUserView(APIView):
             return Response({'token': token.key}, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-class SigninUserView(APIView):
-    def post(self, request):
-        username = request.data.get('username')
-        password = request.data.get('password')
 
-        user = User.objects.filter(username=username).first()
 
-        if user is None or not user.check_password(password):
-            return Response({'error': 'Invalid username or password.'}, status=status.HTTP_401_UNAUTHORIZED)
 
-        token, _ = Token.objects.get_or_create(user=user)
-
-        return Response({'token': token.key}, status=status.HTTP_200_OK)
-
-@permission_classes([IsAuthenticated])
 class LogoutUserView(APIView):
+    permission_classes = [IsAuthenticated]
+
     def post(self, request):
-        request.auth.delete()
-        return Response(status=status.HTTP_204_NO_CONTENT)
+
+        try:
+            token = Token.objects.get(user=request.user)
+            token.delete()
+        except Token.DoesNotExist:
+            return Response({'detail': 'Token does not exist'}, status=status.HTTP_400_BAD_REQUEST)
+        return Response("Logout Successfully",status=status.HTTP_204_NO_CONTENT)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

@@ -11,13 +11,11 @@ class UserSerializerForm(serializers.ModelSerializer):
 
 
 
-
-
 class UserSerializerAuth(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = ('id', 'username', 'password')  # Include other fields as needed
-        extra_kwargs = {'password': {'write_only': True}}
+        fields = ('id', 'username', 'password')
+        extra_kwargs = {'password' : {'write_only' : True}}
 
     def create(self, validated_data):
         user = User.objects.create_user(
@@ -25,3 +23,29 @@ class UserSerializerAuth(serializers.ModelSerializer):
             password=validated_data['password']
         )
         return user
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

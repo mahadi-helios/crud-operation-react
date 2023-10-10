@@ -1,12 +1,15 @@
 from django.urls import path
-from curd import views
+from curd import views 
+from rest_framework.authtoken.views import obtain_auth_token  # BiltIn Function
+
+
 
 urlpatterns = [
     #''' ClassBased api'''
     path('',views.AllDataOverview,name="api_urls"),
     path('singup/', views.SignupUserView.as_view(), name='singup'),
-    path('singin/', views.SigninUserView.as_view(), name='singin'),
-    path('logout/', views.LogoutUserView.as_view(), name='logout'),
+    path('singin/', obtain_auth_token, name='singin'),
+    path('logout/', views.LogoutUserView.as_view(), name='logout'), 
     path("list/",views.ContactApiListView.as_view(),name="contact_list"),
     path("create/", views.ContactApiCreateView.as_view(),name="contact_create"),
     path("update/<int:pk>/",views.ContactApiUpdateView.as_view(),name="update_contact"),
@@ -22,3 +25,9 @@ urlpatterns = [
     # path('contact-delete/<str:pk>/', views.delete_contact_view, name='delete_contact'),
     
 ]
+
+
+
+
+
+

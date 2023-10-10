@@ -1,6 +1,6 @@
 import React from "react";
 
-function ContactList({ contacts, navigate, removeContact }) {
+function ContactList({ contacts, navigate,removeContact }) {
   return (
     <>
       <div className="contact-list">

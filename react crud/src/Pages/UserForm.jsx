@@ -5,7 +5,7 @@ function UserForm({ inputValues, handleFormSubmit, handleInputChange, resetForm,
   const navigate = useNavigate();
   return (
     <>
-      <div class="contact-form">
+      <div className="contact-form">
         <form onSubmit={handleFormSubmit}>
           <h1 className="form-header">User {inputValues.id ? "Edit" : "Create"} Information</h1>
           <div className="label1">
@@ -39,7 +39,7 @@ function UserForm({ inputValues, handleFormSubmit, handleInputChange, resetForm,
           <button className="button1" type="submit">
             Submit
           </button>
-          <button className="button1" type="submit" onClick={()=>navigate('/all-contact')}>
+          <button className="btn-list-all" type="button" onClick={()=>navigate('/all-contact')}>
             List
           </button>
         </form>

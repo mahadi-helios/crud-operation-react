@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import Cookies from "js-cookie";
 
 export default function SingUp(){
     const navigate = useNavigate();
@@ -25,6 +26,7 @@ export default function SingUp(){
               userAuth  
             )
             console.log('singUp Successfully', response.data);
+            Cookies.set('AuthToken', response.data.token);
             navigate('/')
         } catch (error) {
             console.error('singUp Error :', error)

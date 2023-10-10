@@ -42,6 +42,57 @@ export default function App (){
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ////////////////////////'''one componets use app.js ''''''''''''''''''''''''''''
 // import './assets/App.css'
 // import { BrowserRouter, Routes, Route } from 'react-router-dom';
@@ -64,25 +115,6 @@ export default function App (){
 //     </>
 //   );
 // }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

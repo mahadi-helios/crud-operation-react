@@ -74,7 +74,7 @@ export default function AllListOfContact() {
     setAlert({ type: "error", message: "Data delete successfully !" });
     };
 
-    // Initialize a counter variable
+    //  counter variable
     let counter = startIndex + 1;
 
   return (
