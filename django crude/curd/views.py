@@ -14,13 +14,14 @@ from rest_framework.views import APIView
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.authtoken.models import Token
 from curd.serializer import UserSerializerAuth # Import the UserSerializer
-from django.contrib.auth import logout
-
 
 # Create your views here.
 
 
+
 #All Url show in this function 
+
+
 @api_view(['GET'])
 def AllDataOverview(request):
     api_urls={
