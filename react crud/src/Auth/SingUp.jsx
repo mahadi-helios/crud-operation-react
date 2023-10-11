@@ -22,13 +22,10 @@ export default function SingUp(){
     const handleSubmit = async (e)=>{
         e.preventDefault();
         try {
-            const response = await axios.post(`${apiBaseUrl}/singup/`,userAuth  ,{
-                headers:{
-                  "Authorization" : `Token ${Cookies.get("AuthToken")}`
-                }
-              }
+            const response = await axios.post(`${apiBaseUrl}/singup/`,userAuth 
             )
             console.log('singUp Successfully', response.data);
+            Cookies.set('AuthToken', response.data.token);
             navigate('/')
         } catch (error) {
             console.error('singUp Error :', error)
