@@ -13,7 +13,7 @@ function ContactList({ contacts, navigate,removeContact }) {
                 <div className="table-cell">Number</div>
                 <div className="table-cell">Action</div>
               </div>
-              {contacts.slice(0,6).map((contact) => (
+              {contacts.map((contact) => (
               <div className="table-row" key={contact.id}>
                 <div className="table-cell">{contact.name}</div>
                 <div className="table-cell">{contact.phone_number}</div>

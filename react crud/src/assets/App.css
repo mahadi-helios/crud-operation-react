@@ -249,13 +249,22 @@ input[type="text"] {
         flex-direction: column;
         width: 100%;
     }
-
-    .container,
-    .contact-list,
     .contact-form {
         width: 100%;
         padding: 20px;
         height: 500px;
+        max-height: none; 
+        overflow-y: none; 
+        overflow-x: none;
+        box-sizing: border-box;
+        font-size: 11px;
+    }
+
+    .container,
+    .contact-list{
+        width: 100%;
+        padding: 20px;
+        height: 610px;
         max-height: none; 
         overflow-y: auto; 
         overflow-x: auto;
@@ -281,12 +290,29 @@ input[type="text"] {
 
 
 @media screen and (max-width: 280px){
-    .container,
-    .contact-list,
-    .contact-form {
+    .contact-form{
         width: 100%;
         padding: 10px;
-        height: 500px;
+        height: 450px;
+        max-height: none; 
+        overflow-y: none; 
+        overflow-x: no;
+        box-sizing: border-box;
+        font-size: 11px;
+    }
+
+    input[type="text"] {
+        width: 80%;
+        padding: 20px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+
+    .container,
+    .contact-list{
+        width: 100%;
+        padding: 10px;
+        height: 610px;
         max-height: none; 
         overflow-y: auto; 
         overflow-x: auto;
